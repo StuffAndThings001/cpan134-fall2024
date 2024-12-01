@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation</title>
+    <style>
+        li {
+            cursor: pointer;
+            font-size: 18px;
+            margin: 5px 0;
+            transition: color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <ul id="itemList">
+        <li>First item</li>
+        <li>Second item</li>
+        <li>Third item</li>
+    </ul>
+    <script>
+        // Add a new item on page load
+        const ul = document.getElementById("itemList");
+        const newItem = document.createElement("li");
+        newItem.textContent = "Fourth item";
+        ul.appendChild(newItem);
+
+        // Function to generate a random string
+        function getRandomString(length = 8) {
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            return Array.from({ length }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+        }
+
+        // Change text content of list items on click
+        ul.addEventListener("click", function (event) {
+            if (event.target.tagName === "LI") {
+                event.target.textContent = getRandomString();
+            }
+        });
+    </script>
+</body>
+</html>
